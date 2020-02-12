@@ -120,6 +120,7 @@ COMPILE ~CtBVamp/d~
 
 EXTEND_TOP ~ar0809.bcs~ ~CtBVamp/Extend/ar0809.baf~
 EXTEND_TOP ~baldur.bcs~ ~CtBVamp/Extend/coffinday.baf~
+EXTEND_BOTTOM ~ar0020.bcs~ ~CtBVamp/Extend/ar0020.baf~
 
 COPY_EXISTING ~AR0809.are~           ~override~
 	READ_LONG  0x70  "cont_offset"

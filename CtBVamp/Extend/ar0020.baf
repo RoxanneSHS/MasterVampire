@@ -1,0 +1,8 @@
+IF
+Global("cbnengsee","ar0020",0)
+THEN
+RESPONSE #100
+SetGlobal("cbnengsee","ar0020",1)
+RevealAreaOnMap("ar3597")
+Continue()
+END
