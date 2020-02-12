@@ -1,0 +1,140 @@
+BACKUP ~CtBVamp/backup~
+AUTHOR ~Roxanne@baldursextendedworld.com based on a quest from Charles Bisson's CtB~
+
+AUTO_TRA ~CtBVamp/TRA/~
+
+VERSION ~v0.1~
+
+ALWAYS
+ACTION_IF GAME_IS ~eet~ BEGIN
+		OUTER_SET wmp_xCoord_SoA = 0
+		OUTER_SET wmp_yCoord_SoA = 2283
+	END ELSE BEGIN
+		OUTER_SET wmp_xCoord_SoA = 0
+		OUTER_SET wmp_yCoord_SoA = 0
+	END
+END
+
+LANGUAGE ~English~ ~english~ ~CtBVamp/TRA/setup.tra~
+
+BEGIN @53
+
+APPEND ~MASTAREA.2DA~
+~AR3597  value~
+
+COPY ~CtBVamp/are~ ~override~
+COPY ~CtBVamp/bmp~ ~override~
+
+ADD_JOURNAL @97 @98 USING ~CtBVamp/TRA/setup.tra~
+
+ACTION_IF GAME_IS ~eet~ BEGIN
+INCLUDE ~%MOD_FOLDER%/worldmap/add_worldmap_tbl.tpa~
+	LAF ADD_WORLDMAP_TBL
+		INT_VAR
+		inclSv = 0
+		add_x = wmp_xCoord_SoA
+		add_y = wmp_yCoord_SoA
+		STR_VAR
+		path_to_areas = EVAL ~%MOD_FOLDER%/Worldmap/3597areas.tbl~
+		path_to_areas_bp = EVAL ~%MOD_FOLDER%/Worldmap/3597areas.tbl~
+		path_to_links = EVAL ~%MOD_FOLDER%/Worldmap/3597.tbl~
+		path_to_trans = EVAL ~%MOD_FOLDER%/Worldmap/3597.tra~
+	END
+END
+
+ACTION_IF FILE_EXISTS ~Worldmap/map_mods_areas.tbl~ THEN BEGIN
+    COPY ~Worldmap/map_mods_areas.tbl~  ~Worldmap~
+     APPEND_FILE ~CtBVamp/Worldmap/3597areas.tbl~
+END
+  ELSE BEGIN
+    MKDIR ~Worldmap~
+    COPY ~CtBVamp/Worldmap/3597areas.tbl~ ~Worldmap/map_mods_areas.tbl~
+END
+
+ACTION_IF FILE_EXISTS ~Worldmap/map_mods_links.tbl~ THEN BEGIN
+    COPY ~Worldmap/map_mods_links.tbl~  ~Worldmap~
+    APPEND_FILE ~CtBVamp/Worldmap/3597.tbl~
+  END
+  ELSE BEGIN
+    MKDIR ~Worldmap~
+    COPY ~CtBVamp/Worldmap/3597.tbl~ ~Worldmap/map_mods_links.tbl~
+END
+
+ACTION_IF FILE_EXISTS ~Worldmap/map_mods_trans.tra~ THEN BEGIN
+     COPY ~Worldmap/map_mods_trans.tra~  ~Worldmap~
+     APPEND_FILE_EVALUATE ~CtBVamp/Worldmap/3597.tra~
+   END
+  ELSE BEGIN
+    MKDIR ~Worldmap~
+    COPY ~CtBVamp/Worldmap/3597.tra~ ~Worldmap/map_mods_trans.tra~
+END
+
+COPY ~CtBVamp/Extend/CBRNCMAN.STO~ ~override~ SAY STORE_NAME @140
+
+COPY ~CtBVamp/Extend/CBRNCBOY.CRE~ ~override~ SAY NAME1 @76    SAY NAME2 @76
+COPY ~CtBVamp/Extend/CBRNCBVP.CRE~ ~override~ SAY NAME1 @76    SAY NAME2 @76
+COPY ~CtBVamp/Extend/CBRNCGRL.CRE~ ~override~ SAY NAME1 @77    SAY NAME2 @77
+COPY ~CtBVamp/Extend/CBRNCGVP.CRE~ ~override~ SAY NAME1 @77    SAY NAME2 @77
+COPY ~CtBVamp/Extend/CBRNCHER.CRE~ ~override~ SAY NAME1 @78    SAY NAME2 @78
+COPY ~CtBVamp/Extend/CBRNCMAN.CRE~ ~override~ SAY NAME1 @79    SAY NAME2 @79
+COPY ~CtBVamp/Extend/CBRNCMVP.CRE~ ~override~ SAY NAME1 @79    SAY NAME2 @79
+COPY ~CtBVamp/Extend/CBRNCWFE.CRE~ ~override~ SAY NAME1 @80    SAY NAME2 @80
+COPY ~CtBVamp/Extend/CBRNCWVP.CRE~ ~override~ SAY NAME1 @80    SAY NAME2 @80
+COPY ~CtBVamp/Extend/CBTREANT.CRE~ ~override~ SAY NAME1 @93    SAY NAME2 @93
+COPY ~CtBVamp/Extend/CB597RIR.CRE~ ~override~ SAY NAME1 @78    SAY NAME2 @78
+COPY ~CtBVamp/Extend/CB597RIS.CRE~ ~override~ SAY NAME1 @78    SAY NAME2 @78
+COPY ~CtBVamp/Extend/CBMASTVP.CRE~ ~override~ SAY NAME1 @53    SAY NAME2 @53
+
+ACTION_FOR_EACH var IN bam wav BEGIN
+		ACTION_BASH_FOR ~CtBVamp/treant~ ~^.+\.%var%$~ BEGIN
+			ACTION_IF NOT FILE_EXISTS_IN_GAME ~%BASH_FOR_FILE%~ BEGIN
+				COPY ~%BASH_FOR_FILESPEC%~ ~override~
+			END
+		END
+	END	
+    COPY_EXISTING 
+		~CBTREANT.CRE~        ~override~
+			WRITE_LONG 0x28  0xE26B
+    BUT_ONLY_IF_IT_CHANGES
+
+COPY ~CtBVamp/Extend/CB3597ST.ITM~ ~override~
+  SAY NAME2 @650011
+  SAY DESC @650012
+COPY ~CtBVamp/Extend/CBVMPCF1.ITM~ ~override~
+     ~CtBVamp/Extend/CBVMPCF2.ITM~ ~override~
+     ~CtBVamp/Extend/CBVMPCF3.ITM~ ~override~
+     ~CtBVamp/Extend/CBVMPCF4.ITM~ ~override~
+  SAY NAME1 @650569
+  SAY NAME2 @650569
+  SAY UNIDENTIFIED_DESC @650570
+COPY ~CtBVamp/Extend/CBVMPDR1.ITM~ ~override~
+     ~CtBVamp/Extend/CBVMPDR2.ITM~ ~override~
+     ~CtBVamp/Extend/CBVMPDR3.ITM~ ~override~
+  SAY NAME1 @650571
+  SAY NAME2 @650571
+  SAY UNIDENTIFIED_DESC @650572
+
+COMPILE ~CtBVamp/baf~
+LOAD_TRA ~CtBVamp/TRA/setup.tra~
+COMPILE ~CtBVamp/d~
+
+EXTEND_TOP ~ar0809.bcs~ ~CtBVamp/Extend/ar0809.baf~
+EXTEND_TOP ~baldur.bcs~ ~CtBVamp/Extend/coffinday.baf~
+
+COPY_EXISTING ~AR0809.are~           ~override~
+	READ_LONG  0x70  "cont_offset"
+	READ_SHORT 0x74  "cont_num"
+	FOR( cnt=0; cnt<"%cont_num%"; cnt=cnt+1 ) BEGIN
+		READ_ASCII ("%cont_offset%"+0xc0*cnt)       "cont_name"
+		PATCH_IF (("%cont_name%" STRING_COMPARE_CASE "Altar 1")=0) BEGIN
+			LPF fj_are_structure
+				INT_VAR
+				fj_con_itm_idx    = EVAL cnt
+				STR_VAR
+				fj_name           = CB3597ST
+				fj_structure_type = itm
+			END
+		END
+	END
+  
+

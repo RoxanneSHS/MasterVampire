@@ -1,0 +1,11 @@
+IF
+Global("CbKilledAllRanchVampires","GLOBAL",0)
+Dead("CBMASTVP")
+THEN
+RESPONSE #100
+SetGlobal("CbKilledAllRanchVampires","GLOBAL",1)
+EraseJournalEntry(@97)
+AddJournalEntry(@98,QUEST_DONE)
+END
+
+

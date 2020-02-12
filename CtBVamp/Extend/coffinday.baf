@@ -1,0 +1,25 @@
+IF
+Global("CbVampireSubQuestStart","GLOBAL",3)
+AreaType(OUTDOOR)
+!TimeOfDay(NIGHT)
+OR(7)
+PartyHasItem("CBVMPDR1")
+PartyHasItem("CBVMPDR2")
+PartyHasItem("CBVMPDR3")
+PartyHasItem("CBVMPCF1")
+PartyHasItem("CBVMPCF2")
+PartyHasItem("CBVMPCF3")
+PartyHasItem("CBVMPCF4")
+THEN
+RESPONSE #100
+SetGlobal("CbVampireSubQuestStart","GLOBAL",69)
+SetGlobal("CbVampireSubQuestFailed","GLOBAL",1)
+TakePartyItem("CBVMPDR1")
+TakePartyItem("CBVMPDR2")
+TakePartyItem("CBVMPDR3")
+TakePartyItem("CBVMPCF1")
+TakePartyItem("CBVMPCF2")
+TakePartyItem("CBVMPCF3")
+TakePartyItem("CBVMPCF4")
+DisplayStringWait(Player1,@550255)
+END
