@@ -18,6 +18,9 @@ END
 LANGUAGE ~English~
 	 ~English~
          ~CtBVamp/English/setup.tra~
+LANGUAGE ~Russian (translation aerie-ru.info team added by Serdrick)~
+	 ~russian~
+	 ~CtBVamp/russian/setup.tra~
 
 BEGIN @53
 
