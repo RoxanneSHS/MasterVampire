@@ -1,9 +1,9 @@
 BACKUP ~CtBVamp/backup~
 AUTHOR ~Roxanne@baldursextendedworld.com based on a quest from Charles Bisson's CtB~
 
-AUTO_TRA ~CtBVamp/TRA/~
+AUTO_TRA ~CtBVamp/%s~
 
-VERSION ~v0.1~
+VERSION ~v0.2~
 
 ALWAYS
 ACTION_IF GAME_IS ~eet~ BEGIN
@@ -15,7 +15,9 @@ ACTION_IF GAME_IS ~eet~ BEGIN
 	END
 END
 
-LANGUAGE ~English~ ~english~ ~CtBVamp/TRA/setup.tra~
+LANGUAGE ~English~
+	 ~English~
+         ~CtBVamp/English/setup.tra~
 
 BEGIN @53
 
