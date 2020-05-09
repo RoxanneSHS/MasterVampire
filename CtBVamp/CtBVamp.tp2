@@ -3,7 +3,7 @@ AUTHOR ~Roxanne@baldursextendedworld.com based on a quest from Charles Bisson's 
 
 AUTO_TRA ~CtBVamp/%s~
 
-VERSION ~v0.2~
+VERSION ~v0.3~
 
 ALWAYS
 ACTION_IF GAME_IS ~eet~ BEGIN
@@ -43,7 +43,7 @@ INCLUDE ~%MOD_FOLDER%/worldmap/add_worldmap_tbl.tpa~
 		path_to_areas = EVAL ~%MOD_FOLDER%/Worldmap/3597areas.tbl~
 		path_to_areas_bp = EVAL ~%MOD_FOLDER%/Worldmap/3597areas.tbl~
 		path_to_links = EVAL ~%MOD_FOLDER%/Worldmap/3597.tbl~
-		path_to_trans = EVAL ~%MOD_FOLDER%/Worldmap/3597.tra~
+		path_to_trans = EVAL ~%MOD_FOLDER%/Worldmap/%LANGUAGE%/3597.tra~
 	END
 END
 
@@ -67,11 +67,11 @@ END
 
 ACTION_IF FILE_EXISTS ~Worldmap/map_mods_trans.tra~ THEN BEGIN
      COPY ~Worldmap/map_mods_trans.tra~  ~Worldmap~
-     APPEND_FILE_EVALUATE ~CtBVamp/Worldmap/3597.tra~
+     APPEND_FILE_EVALUATE ~CtBVamp/Worldmap/%LANGUAGE%/3597.tra~
    END
   ELSE BEGIN
     MKDIR ~Worldmap~
-    COPY ~CtBVamp/Worldmap/3597.tra~ ~Worldmap/map_mods_trans.tra~
+    COPY ~CtBVamp/Worldmap/%LANGUAGE%/3597.tra~ ~Worldmap/map_mods_trans.tra~
 END
 
 COPY ~CtBVamp/Extend/CBRNCMAN.STO~ ~override~ SAY STORE_NAME @140
