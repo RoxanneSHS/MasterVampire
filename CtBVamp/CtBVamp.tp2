@@ -88,7 +88,7 @@ COPY ~CtBVamp/Extend/CBRNCWVP.CRE~ ~override~ SAY NAME1 @80    SAY NAME2 @80
 COPY ~CtBVamp/Extend/CBTREANT.CRE~ ~override~ SAY NAME1 @93    SAY NAME2 @93
 COPY ~CtBVamp/Extend/CB597RIR.CRE~ ~override~ SAY NAME1 @78    SAY NAME2 @78
 COPY ~CtBVamp/Extend/CB597RIS.CRE~ ~override~ SAY NAME1 @78    SAY NAME2 @78
-COPY ~CtBVamp/Extend/CBMASTVP.CRE~ ~override~ SAY NAME1 @53    SAY NAME2 @53
+COPY ~CtBVamp/Extend/CBMASTVP.CRE~ ~override~ SAY NAME1 @153    SAY NAME2 @153
 
 ACTION_FOR_EACH var IN bam wav BEGIN
 		ACTION_BASH_FOR ~CtBVamp/treant~ ~^.+\.%var%$~ BEGIN
