@@ -1,4 +1,13 @@
 IF
+Global("CbVampireSubQuestStart","GLOBAL",0)
+PartyHasItem("CB3597ST")
+THEN
+RESPONSE #100
+SetGlobal("CbVampireSubQuestStart","GLOBAL",1)
+Continue()
+END
+
+IF
 Global("CbCanGoMaster","AR3597",0)
 Global("CbVampireSubQuestStart","GLOBAL",4)
 THEN

@@ -6,3 +6,12 @@ SetGlobal("cbnengsee","ar0020",1)
 RevealAreaOnMap("ar3597")
 Continue()
 END
+
+IF
+Global("CbVampireSubQuestStart","GLOBAL",0)
+PartyHasItem("CB3597ST")
+THEN
+RESPONSE #100
+SetGlobal("CbVampireSubQuestStart","GLOBAL",1)
+Continue()
+END
